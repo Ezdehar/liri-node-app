@@ -2,7 +2,6 @@ require("dotenv").config();
 
 var keys = require("./keys.js");
 
-
 var request = require("request");
 
 var getMovie = function(movieName) {
@@ -61,13 +60,14 @@ var pick = function(caseData, functionData) {
     default:
       console.log("LIRI doesn't know that");
   }
-};
 
 var runThis = function(argOne, argTwo) {
   pick(argOne, argTwo);
-};
+}
 
 runThis(process.argv[2], process.argv[3]);
+}
+}
 });
 
 
