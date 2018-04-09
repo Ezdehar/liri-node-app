@@ -15,7 +15,7 @@ request(movieUrl, function(error, response, body) {
     var data = JSON.parse(body)
 
       console.log("data ================ >", data);
-      //console.log("Title: ", "data.Title")
+      console.log("year: ", "data.Year", "title: ", "data.Title")
       }
 
   // if (error) {
