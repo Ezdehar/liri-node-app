@@ -1,46 +1,49 @@
 require("dotenv").config(); 
 
-var keys = require("./keys.js");
+//var keys = require("./keys.js");
 
 var request = require("request");
 
 var getMovie = function(movieName) {
     if (movieName === undefined) {
-      movieName = "Mr. Nobody."
-    }
-  
-var movieUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=full&tomatoes=true&apikey=trilogy";
+      movieName = "Mr. Nobody.";
+
+var movieUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=full&tomatoes=true&apikey=Trilogy";
 
 request(movieUrl, function(error, response, body) {
   if (!error && response.statusCode === 200) {
     var data = JSON.parse(body)
-        //onsole.log("data ================ >", data);
-      console.log("Year: ","data.Year", "Title: ", "data.Title");
-      //"data.Title",  "imdbRating: ","data.Rating","Language: ","data.Language");
+
+      console.log("data ================ >", data);
+      //console.log("Title: ", "data.Title")
       }
-  if (err) {
-    console.log(err);
-    }
+
+  // if (error) {
+  //   console.log(error);
+  //   }
   });
+}
+
 };
 
 var pick = function(caseData, functionData) {
   switch (caseData) {
-    case "my-tweets":
-      getMyTweets();
-      break;
-    case "spotify-this-song":
-      getMeSpotify(functionData);
-      break;
-    case "movie-this":
+      case "my-tweets":
+      getMeTweets();
+    break;
+      case "spotify-this-song":
+      getMepotify(functionData);
+    break;
+      case "movie-this":
       getMovie(functionData);
-      break;
-    case "do-what-it-says":
+    break;
+      case "do-what-it-says":
       doWhatItSays();
-      break;
+    break;
     default:
       console.log("LIRI doesn't know that");
-  }
+      }
+};
 
 var runThis = function(argOne, argTwo) {
   pick(argOne, argTwo);
@@ -48,7 +51,6 @@ var runThis = function(argOne, argTwo) {
 
 runThis(process.argv[2], process.argv[3]);
 
-};
 
 // var Twitter = require("twitter");
 
